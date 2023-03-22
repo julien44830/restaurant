@@ -1,0 +1,6 @@
+.custom-image {
+    height: 300px; /* Ajustez la hauteur selon vos besoins */
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
