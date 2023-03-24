@@ -22,7 +22,7 @@
 										<a class="nav-link" href="#">Notre carte</a>
 								</li>
 								<li class="nav-item">
-										<a class="nav-link" href="#">Réservez votre table</a>
+										<a class="nav-link" href="reservation.php">Réservez votre table</a>
 								</li>
 								<li class="nav-item">
 										<a class="nav-link" href="tou_sur_nous.php">Tout sur nous</a>

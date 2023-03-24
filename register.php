@@ -28,6 +28,13 @@ include  'templates/header.php';
         
         <label for="confirm_password">Confirmer le mot de passe:</label>
         <input type="password" name="confirm_password" id="confirm_password" required><br><br>
+
+        <label for="nb_user">nombre de personnes :</label>
+        <input type="text" name="nb_user" id="nb_user" required><br><br>
+
+        <label for="allergy">allergie :</label>
+        <input type="text" name="allergy" id="allergy" required><br><br>
+
         
         <input type="submit" value="S'inscrire">
     </form>
