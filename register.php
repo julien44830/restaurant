@@ -1,6 +1,8 @@
 <?php
 include 'templates/head.php';
+include  'templates/nav.php';
 include  'templates/header.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +31,11 @@ include  'templates/header.php';
         <label for="confirm_password">Confirmer le mot de passe:</label>
         <input type="password" name="confirm_password" id="confirm_password" required><br><br>
 
-        <label for="nb_user">nombre de personnes :</label>
-        <input type="text" name="nb_user" id="nb_user" required><br><br>
+        <label for="nb_default_user">nombre de personnes :</label>
+        <input type="int" name="nb_default_user" id="nb_default_user" required><br><br>
 
-        <label for="allergy">allergie :</label>
-        <input type="text" name="allergy" id="allergy" required><br><br>
+        <label for="user_allergy">allergie :</label>
+        <input type="text" name="user_allergy" id="user_allergy" required><br><br>
 
         
         <input type="submit" value="S'inscrire">
@@ -42,5 +44,6 @@ include  'templates/header.php';
 </html>
 
 <?php
-include 'templates/footer.php'
+include 'templates/footer.php';
+// include 'tamplates/ctrl_conn.php';
 ?>

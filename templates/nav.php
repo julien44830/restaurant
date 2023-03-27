@@ -3,9 +3,11 @@
 				<a class="navbar-brand" href="index.php">Restaurant</a>
 				<div class="d-flex ml-auto">
 					<?php
-					session_start();
+					include 'config/start_session.php';
 
-					if (isset($_SESSION['user_id'])) {
+					if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
+						echo '<a class="nav-link" href="reservation_admin.php">Réservations admin</a>';
+					} elseif (isset($_SESSION['lastname'])) {
 						$lastname = $_SESSION['lastname'];
 						echo '<p class="nav-link" href="logout.php">Bienvenue '. htmlspecialchars($lastname) . '</p>';
 					} else {
@@ -29,7 +31,7 @@
 								</li>
                 <li>
                     <?php
-                    if (isset($_SESSION['user_id'])) {
+                    if (isset($_SESSION['lastname'])) {
                         echo '<a class="nav-link" href="config/session_logout.php">Déconnexion</a>';
                     }
                     ?>

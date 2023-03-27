@@ -1,25 +1,26 @@
 <?php
 include 'config/conn_bdd.php';
+include 'config/start_session.php';
 
-session_start();
+$user_id = isset($_POST['user_id']) ? intval($_POST['user_id']) : 0;
+$date = isset($_POST['date']) ? $_POST['date'] : "";
+$time = isset($_POST['time']) ? $_POST['time'] : "";
+$user_lastname = isset($_POST['user_lastname']) ? $_POST['user_lastname'] : "";
+$username = isset($_POST['username']) ? $_POST['username'] : "";
+$tel = isset($_POST['tel']) ? $_POST['tel'] : "";
+$nb_default_user = isset($_POST['nb_default_user']) ? intval($_POST['nb_default_user']) : 0;
+$user_allergy = isset($_POST['user_allergy']) ? $_POST['user_allergy'] : "";
 
-$username = $_POST['username'];
-$user_lastname = $_POST['user_lastname'];
-$tel = $_POST['tel'];
-$date = $_POST['date'];
-$time = $_POST['time'];
-$nb_user = $_POST['nb_user'];
-$allergy = $_POST['allergy'];
 
-
-$sql = "INSERT INTO reservation (username, user_lastname, tel, date, time, nb_user, allergy) 
-        VALUES ('$username', '$user_lastname', '$tel', '$date', '$time', '$nb_user', '$allergy')";
+$sql = "INSERT INTO reservation (id_user, username, user_lastname, tel, date, time, nb_default_user, user_allergy) 
+        VALUES ('$user_id', '$username', '$user_lastname', '$tel', '$date', '$time', '$nb_default_user', '$user_allergy')";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Réservation ajoutée avec succès";
+    header("Location: reservation.php");
 } else {
     echo "Erreur : " . $sql . "<br>" . $conn->error;
 }
 
 $conn->close();
+
 ?>

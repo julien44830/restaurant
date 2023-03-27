@@ -2,12 +2,15 @@
 include 'templates/head.php';
 include 'templates/nav.php';
 include 'templates/header.php';
-include 'config/conn_bdd.php'
+include 'config/conn_bdd.php';
+include 'config/start_session.php';
+var_dump($_SESSION);
 ?>
 
+
 <form action="login.php" method="post">
-  Nom d'utilisateur: <input type="text" name="username"><br>
-  Mot de passe: <input type="password" name="password"><br>
+  Email du compte : <input type="email" name="email" require><br>
+  Mot de passe : <input type="password" name="password" ><br>
   <input type="submit" value="Se connecter">
 </form>
 <br/>
