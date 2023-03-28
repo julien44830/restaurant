@@ -88,4 +88,14 @@ if (isset($_SESSION['file_path'])) {
   $file_path = "";
 }
 
+if (isset($_SESSION['date'])) {
+  $date = $_SESSION['date'];
+} else {
+  $date = "";
+}
+
+if (isset($_SESSION['nb_reservations'])) {
+  $nb_reservations  = $_SESSION['nb_reservations '];
+} else {
+}
 ?>
