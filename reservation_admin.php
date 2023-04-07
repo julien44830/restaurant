@@ -1,7 +1,5 @@
 <?php
-include 'templates/nav.php';
 include 'templates/head.php';
-include 'templates/header.php';
 include 'config/conn_bdd.php';
 include 'config/start_session.php';
 include 'config/delete_reservation.php';

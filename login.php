@@ -4,7 +4,7 @@ include 'templates/nav.php';
 include 'templates/header.php';
 include 'config/conn_bdd.php';
 include 'config/start_session.php';
-var_dump($_SESSION);
+include 'config/ctrl_conn.php';
 ?>
 
 
@@ -18,5 +18,4 @@ var_dump($_SESSION);
 
 <?php
 include 'templates/footer.php';
-include 'config/ctrl_conn.php';
 ?>

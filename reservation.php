@@ -7,7 +7,11 @@ include 'config/start_session.php';
 include 'config/delete_reservation.php';
 include 'get_reservation_count.php';
 
-if (isset($_SESSION['lastname'])) {	
+if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
+  include'reservation_admin.php';
+  
+
+}elseif (isset($_SESSION['lastname'])) {	
     $lastname = $_SESSION['lastname'];
     $user_id = $_SESSION['user_id'];
 

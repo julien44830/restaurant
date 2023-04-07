@@ -98,4 +98,11 @@ if (isset($_SESSION['nb_reservations'])) {
   $nb_reservations  = $_SESSION['nb_reservations '];
 } else {
 }
+
+if (isset($_SESSION['legend'])) {
+  $legend  = $_SESSION['legend'];
+} else {
+  $legend = "";
+}
+
 ?>

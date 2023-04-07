@@ -6,7 +6,7 @@
 					include 'config/start_session.php';
 
 					if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
-						echo '<a class="nav-link" href="reservation_admin.php">Réservations admin</a>';
+						echo '<p class="nav-link" >droit admin</p>';
 					} elseif (isset($_SESSION['lastname'])) {
 						$lastname = $_SESSION['lastname'];
 						echo '<p class="nav-link" href="logout.php">Bienvenue '. htmlspecialchars($lastname) . '</p>';
@@ -21,7 +21,7 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 						<ul class="navbar-nav">
 								<li class="nav-item">
-										<a class="nav-link" href="#">Notre carte</a>
+										<a class="nav-link" href="carte.php">Notre carte</a>
 								</li>
 								<li class="nav-item">
 										<a class="nav-link" href="reservation.php">Réservez votre table</a>
@@ -42,5 +42,5 @@
 </header>
 
 <?php
-print_r($_SESSION)
+
 ?>

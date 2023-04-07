@@ -10,6 +10,7 @@ if(isset($_POST['submit'])){
   $file_tmp = $_FILES['image']['tmp_name'];
   $file_type = $_FILES['image']['type'];
   $file_size = $_FILES['image']['size'];
+  $legend = $_POST['legend'];
   
   // Définir le dossier de destination pour le fichier téléchargé
   $target_dir = "assets/img/";
@@ -40,7 +41,7 @@ if(isset($_POST['submit'])){
   if ($uploadOk == 1) {
       if (move_uploaded_file($file_tmp, $target_file)) {
           // Enregistrer les informations de l'image dans la base de données
-          $sql = "INSERT INTO images (file_name, file_size, file_type, file_path, created_at) VALUES ('$file_name', '$file_size', '$file_type', '$target_file', NOW())";
+          $sql = "INSERT INTO images (file_name, file_size, file_type, file_path, created_at, legend) VALUES ('$file_name', '$file_size', '$file_type', '$target_file', NOW(), '$legend')";
           $conn->query($sql);
 
           header("Location: index.php");

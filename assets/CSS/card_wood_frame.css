@@ -1,0 +1,26 @@
+.wood {
+	background-image: url('../img/wood_frame.png') ;
+	background-position: center;
+	background-size: 159% 113%;
+	border-radius: 5px;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+	padding: 3%;
+	margin: 3px; 
+	padding-bottom: 10px;
+
+}
+
+.card{
+	background-color: #FFD480;
+
+}
+
+.card-body {
+	border-radius: 10px;
+}
+
+
+.custom-image {
+  object-fit: cover;
+	height: 273px;
+}

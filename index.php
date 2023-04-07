@@ -6,11 +6,11 @@ include 'config/start_session.php';
 include 'config/conn_bdd.php';
 
 if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
- include'index_admin.php';
+include'index_admin.php';
 
 }else{
-	$sql = "SELECT id, file_path FROM images";
-$result = $conn->query($sql);
+	$sql = "SELECT id, file_path, legend FROM images";
+    $result = $conn->query($sql);
 
 	?>
 	<div class="container">
@@ -27,7 +27,7 @@ $result = $conn->query($sql);
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo '<div class="col-md-6 col-lg-4">';          
-                    echo '<img src="' . $row["file_path"] . '" alt="" name="" class="img-fluid img-thumbnail custom-image">';
+                    echo '<img src="' . $row["file_path"] . '" alt="' . $row["legend"] . '" title="' . $row["legend"] . '" name="" class="img-fluid img-thumbnail custom-image">';
                     echo '</div>';
                 }
             }
@@ -36,6 +36,6 @@ $result = $conn->query($sql);
 </div>
 
 <?php
-}
 include 'templates/footer.php';
+}
 ?>
