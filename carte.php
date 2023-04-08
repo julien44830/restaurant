@@ -1,7 +1,6 @@
 <?php
 include 'templates/head.php';
 include 'templates/nav.php';
-include 'templates/header.php';
 include 'config/start_session.php';
 include 'config/conn_bdd.php';
 
@@ -34,6 +33,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
               echo '<div class="card-body">';
               echo '<h5 class="card-title">' . $row['nom'] . '</h5>';
               echo '<p class="card-text">' . $row['description'] . '</p>';
+              echo '<br>';
               echo '<p class="card-text">' . $row['prix'] . '€</p>';
               echo '</div>';
               echo '</div>';
@@ -61,6 +61,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
               echo '<img src="assets/img/' . $row['image'] . '" class="card-img-top p-3 custom-image custom-image">';
               echo '<div class="card-body">';
               echo '<p class="card-text">' . $row['description'] . '</p>';
+              echo '<br>';
               echo '<p class="card-text text-right">' . $row['prix'] . '€</p>';
               echo '</div>';
               echo '</div>';

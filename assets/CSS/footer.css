@@ -1,8 +1,10 @@
 .footer-basic {
-  min-height: calc(100vh - 50px);
 	background-color: #FFD480;
   color:#4b4c4d;
-  }
+  position: fixed;
+  width: 100%;  
+  bottom: 0px;
+}
   
   .footer-basic ul {
     padding:0;
@@ -29,7 +31,7 @@
   
   .footer-basic .social {
     text-align:center;
-    padding-bottom:25px;
+    padding-top:10px;
   }
   
   .footer-basic .social > a {

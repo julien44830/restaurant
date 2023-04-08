@@ -1,8 +1,6 @@
 <?php
 include 'templates/head.php';
 include  'templates/nav.php';
-include  'templates/header.php';
-
 ?>
 
 <!DOCTYPE html>

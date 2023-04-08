@@ -1,6 +1,6 @@
-<header class="position-fixed w-100 top-0">
-		<nav class="navbar navbar-light bg-light ">
-				<a class="navbar-brand" href="index.php">Restaurant</a>
+<header class="position-fixed w-100">
+		<nav class="navbar navbar-light  ">
+				<a class="navbar-brand" href="index.php">LE QUAI ANTIQUE</a>
 				<div class="d-flex ml-auto">
 					<?php
 					include 'config/start_session.php';
@@ -9,9 +9,9 @@
 						echo '<p class="nav-link" >droit admin</p>';
 					} elseif (isset($_SESSION['lastname'])) {
 						$lastname = $_SESSION['lastname'];
-						echo '<p class="nav-link" href="logout.php">Bienvenue '. htmlspecialchars($lastname) . '</p>';
+						echo '<p class="nav-link d-none d-md-inline" href="logout.php">Bienvenue '. htmlspecialchars($lastname) . '</p>';
 					} else {
-						echo '<a class="nav-link" href="login.php" id="connexion">Connexion/inscription</a>';
+						echo '<a class="nav-link d-none d-md-inline" href="login.php" id="connexion">Connexion/inscription</a>';
 					}
 					?>
 				</div>
@@ -29,6 +29,21 @@
 								<li class="nav-item">
 										<a class="nav-link" href="tou_sur_nous.php">Tout sur nous</a>
 								</li>
+
+								<li>
+									
+								</li>
+								<?php
+									if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
+										echo '<p class="nav-link" >droit admin</p>';
+									} elseif (isset($_SESSION['lastname'])) {
+										$lastname = $_SESSION['lastname'];
+									} else {
+										echo '<a class="nav-link  d-md-none" href="login.php" id="connexion">Connexion/inscription</a>';
+									}
+								?>
+
+
                 <li>
                     <?php
                     if (isset($_SESSION['lastname'])) {
