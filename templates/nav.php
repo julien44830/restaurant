@@ -27,7 +27,7 @@
 										<a class="nav-link" href="reservation.php">Réservez votre table</a>
 								</li>
 								<li class="nav-item">
-										<a class="nav-link" href="tou_sur_nous.php">Tout sur nous</a>
+										<a class="nav-link" href="tout_sur_nous.php">Tout sur nous</a>
 								</li>
 
 								<li>

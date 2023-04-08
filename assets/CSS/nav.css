@@ -1,5 +1,17 @@
 header{
     z-index: 1000;
-    background-color: #00000052;
-    color: red;
+	background-color: #c18952;
+    color: white;
+}
+
+a {
+    color: white;
+}
+
+button:hover{
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 55px #fff, 0 0 75px #fff;
+}
+
+a:hover{
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 55px #fff, 0 0 75px #fff;
 }

@@ -17,7 +17,7 @@ include 'index_admin.php';
 		<h1 class="pt-5">Le quai antique</h1>
 	</div>
 
-	<div class="container">
+	<div class="container height_img">
 		<div class="row justify-content-center">
 			<div class="col-md-8 text-center">
 				<h2 class="m-5">Bienvenue chez nous !</h2>

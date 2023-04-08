@@ -4,13 +4,12 @@ body {
 	margin-top: 40px;
 	font-family: 'Dancing Script', cursive;	
 	font-weight:700; 
-	background-color: black;
-	background-position: center center;
-	background-size: contain;
-	height: 120vh;
+	background: linear-gradient(to  bottom , #bc7f43, #eee6d8);
+	background-attachment: fixed;
+	min-height: 100vh;
 }
-
-main{
+.admin{
+	padding-top: 40px;
 }
 
 header{
@@ -21,6 +20,11 @@ h1{
 	text-transform: uppercase;
 }
 
+.height_img{
+	height: 150vh;
+}
 
-h1, h2 {
-	text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 55px #fff, 0 0 75px #fff}
+.height_time{
+	margin-top: 40px;
+	max-height: 60vh;
+}

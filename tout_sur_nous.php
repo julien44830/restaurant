@@ -3,7 +3,7 @@ include 'templates/head.php';
 include 'templates/nav.php';
 ?>
 
-<div class="container">
+<div class="container height_time">
     <div class="row">
         <div class="col-12">
             <h2 class="m-5">

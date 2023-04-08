@@ -4,3 +4,8 @@
     object-fit: cover;
     margin-bottom: 1rem;
   }
+
+  body{
+    height: 120vh;
+
+  }
