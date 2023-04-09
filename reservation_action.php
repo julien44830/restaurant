@@ -10,7 +10,7 @@ $username = isset($_POST['username']) ? $_POST['username'] : "";
 $tel = isset($_POST['tel']) ? $_POST['tel'] : "";
 $nb_default_user = isset($_POST['nb_default_user']) ? intval($_POST['nb_default_user']) : 0;
 $user_allergy = isset($_POST['user_allergy']) ? $_POST['user_allergy'] : "";
-
+$nb_reservations = isset($_POST['nb_reservations']) ? $_POST['nb_reservations'] : "";
 
 $sql = "SELECT COUNT(*) AS nb_reservations FROM reservation WHERE date = '$date'";
 $result = $conn->query($sql);
@@ -31,16 +31,5 @@ echo "Erreur : " . $sql . "<br>" . $conn->error;
 $conn->close();
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 ?>

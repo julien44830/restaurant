@@ -16,6 +16,12 @@ if (isset($_SESSION['username'])){
   $username = "";
 }
 
+if (isset($_SESSION['lastname'])){
+  $lastname = $_SESSION['lastname'];
+} else {
+  $lastname = "";
+}
+
 if (isset($_SESSION['tel'])) {
   $tel = $_SESSION['tel'];
 } else {

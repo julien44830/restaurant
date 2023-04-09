@@ -32,7 +32,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
               echo '<div class="card">';
               echo '<div class="card-body">';
               echo '<h5 class="card-title">' . $row['nom'] . '</h5>';
-              echo '<p class="card-text">' . $row['description'] . '</p>';
+              echo '<p class="card-text text-center">' . $row['description'] . '</p>';
               echo '<br>';
               echo '<p class="card-text">' . $row['prix'] . '€</p>';
               echo '</div>';
@@ -44,14 +44,14 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
       </div>
     </div>
 
-    <div class="container">
+    <div class="container pb-5">
       <div class="row justify-content-center">
         <div class="col-md-8 text-center">
           <h2 class="m-5">nos plats</h2>
         </div>
       </div>
     
-      <div class="row">
+      <div class="row pb-5">
         <?php
           if ($result_plat->num_rows > 0) {
             while($row = $result_plat->fetch_assoc()) {

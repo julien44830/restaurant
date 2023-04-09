@@ -12,8 +12,8 @@ include 'index_admin.php';
 	$result = $conn->query($sql);
 	
 ?>
-<main>
-	<div class="text-center">
+<main class="pb-5">
+	<div class="text-center ">
 		<h1 class="pt-5">Le quai antique</h1>
 	</div>
 
@@ -25,12 +25,12 @@ include 'index_admin.php';
 			</div>
 		</div>
 
-		<div class="row  gx-3">
+		<div class="row pb-5 gx-3">
 			<?php
 				// Generate <img> tags for each image path
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {
-						echo '<div class="col-md-6 col-lg-4">';          
+						echo '<div class="col-md-6 col-lg-4 pb-3">';          
 						echo '<img src="' . $row["file_path"] . '" alt="' . $row["legend"] . '" title="' . $row["legend"] . '" name="" class="img-fluid img-thumbnail custom-image">';
 						echo '</div>';
 					}

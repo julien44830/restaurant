@@ -6,25 +6,47 @@ body {
 	font-weight:700; 
 	background: linear-gradient(to  bottom , #bc7f43, #eee6d8);
 	background-attachment: fixed;
-	min-height: 100vh;
 }
 .admin{
-	padding-top: 40px;
+	padding-top: 60px;
+	padding-bottom: 9rem;
 }
 
 header{
 	margin-top: -40px;
 }
 
+
 h1{
 	text-transform: uppercase;
 }
 
-.height_img{
-	height: 150vh;
+.pb{
+	padding-bottom: 10em;
+	height: 100vh;
 }
 
 .height_time{
-	margin-top: 40px;
-	max-height: 60vh;
+	padding-top: 40px;
+	max-height: 60vh !important;
+	min-height: 0vh !important;
+}
+.height{
+	min-height: 124rem;
+}
+
+
+.form_reserv{
+	padding-bottom: 8rem;
+}
+
+footer{
+	width: 100%;
+}
+
+@media (min-width: 576px){
+	.admin{
+		padding-bottom: 9rem;
+	}
+	
 }

@@ -3,16 +3,12 @@ include 'templates/head.php';
 include 'templates/nav.php';
 ?>
 
-<div class="container height_time">
+<div class="container height_time pb">
     <div class="row">
         <div class="col-12">
             <h2 class="m-5">
-            Tout savoir à propos de nous
-            </h2>
-
-            <p>
             Nous sommes ouvert tout les jours:
-            </p>
+            </h2>
         </div>
     </div>
 
@@ -71,8 +67,27 @@ include 'templates/nav.php';
             </ul>
         </div>
     </div>
-</div>
+		<br>
+		<div class="text-center">
+			<ul class="list-unstyled ">
+				<li>
+					<div class="d-flex justify-content-center">
+						<span>téléphone : </span>
+						<span>06 00 00 00 00</span>
+					</div>
+				</li>
+				<br>
+				<li>
+					<div class="d-flex justify-content-center ">
+						<span>adresse : </span>
+						<span><p class="mb-1"> 6 rue du cahteau</p><p class="m-1">73000 chambéry</p></span>
+					</div>
+				</li>
 
+
+			</ul>
+		</div>
+	</div >
 <?php
 include 'templates/footer.php'
 ?>

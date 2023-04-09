@@ -15,7 +15,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
 						if ($result->num_rows > 0) {
 							while($row = $result->fetch_assoc()) {
 								$legend = $row['legend'];
-								echo '<div class="col-md-6 col-lg-4">';
+								echo '<div class="col-md-6 col-lg-4 pb-3">';
 								echo '<img src="' . $row["file_path"] . '" alt="'.$legend.'" title="'.$legend.'" name="" class="img-fluid img-thumbnail custom-image">';
 								echo '<a class="btn btn-danger" href="delete_img.php?id=' . $row["id"] . '">Supprimer</a>';
 								echo '</div>';
@@ -23,19 +23,19 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
             }
         ?>
     </div>
-</div>
-
-<br>
-
-
-
-
-		<form action="upload.php" method="post" enctype="multipart/form-data">
+		<br>
+		<form class=" pb-5" action="upload.php" method="post" enctype="multipart/form-data">
 			<input type="file" name="image">
 			<label for="legend">Légende :</label>
 			<input type="text" name="legend" id="legend">
 			<input type="submit" name="submit" value="Upload">
 		</form>
+</div>
+
+
+
+
+
 
 
 <?php

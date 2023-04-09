@@ -29,11 +29,10 @@ if (!empty($email) && !empty($password)) {
 
             header("Location: index.php");
         } else {
-            echo "Mot de passe incorrect";
+            echo '<script>alert("mot de passe incorrecte.");</script>'; 
         }
     } else {
-        echo "Email incorrect";
+        echo '<script>alert("adresse email inconue");</script>';
     }
 }
-
 ?>

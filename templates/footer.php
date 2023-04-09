@@ -7,11 +7,9 @@
 					<a href="https://www.facebook.com/"><i class="icon ion-social-facebook fa fa-facebook"></i></a>
 				</div>
 				<ul class="list-inline">
-					<li class="list-inline-item"><a href="#">Home</a></li>
-					<li class="list-inline-item"><a href="#">Services</a></li>
-					<li class="list-inline-item"><a href="#">About</a></li>
-					<li class="list-inline-item"><a href="#">Terms</a></li>
-					<li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+					<li class="list-inline-item"><a href="index.php">Accueil</a></li>
+					<li class="list-inline-item"><a href="reservation.php">Réservation</a></li>
+					<li class="list-inline-item"><a href="mention_legales.php">Mention légales</a></li>
 				</ul>
 				<p class="copyright">LE QUAI ANTIQUE © 2023</p>
 			</footer>
