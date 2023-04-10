@@ -30,9 +30,13 @@ include 'index_admin.php';
 				// Generate <img> tags for each image path
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {
-						echo '<div class="col-md-6 col-lg-4 pb-3">';          
+						echo '<div class="col-md-6 col-lg-4 pb-3 ">';  
+						echo '<div class="photo-container">';        
 						echo '<img src="' . $row["file_path"] . '" alt="' . $row["legend"] . '" title="' . $row["legend"] . '" name="" class="img-fluid img-thumbnail custom-image">';
+						echo '<span class="title">' . $row["legend"] . '</span>';
 						echo '</div>';
+						echo '</div>';
+
 					}
 				}
 			?>
