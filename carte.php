@@ -24,20 +24,23 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
         </div>
       </div>
       
-      <div class="row">
+      <div class="row  ">
         <?php
           if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-              echo '<div class="col-md-4 mb-4">';
+              echo '<div class="col-md-4 mb-4 carte">';
               echo '<div class="card">';
-              echo '<div class="card-body">';
+              echo '<div class="photo-container">';
+              echo '</div>';
+              echo '<div class="card-body menu">';
               echo '<h5 class="card-title">' . $row['nom'] . '</h5>';
               echo '<p class="card-text text-center">' . $row['description'] . '</p>';
               echo '<br>';
               echo '<p class="card-text">' . $row['prix'] . '€</p>';
               echo '</div>';
               echo '</div>';
-              echo '</div>';                
+              echo '</div>';
+              
             }
           }
         ?>
@@ -55,17 +58,20 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
         <?php
           if ($result_plat->num_rows > 0) {
             while($row = $result_plat->fetch_assoc()) {
-              echo '<div class="col-md-6 col-lg-4 my-4 ">';
-              echo '<div class="wood card h-100">';
-              echo '<h5 class="card-title text-center p-3">' . $row['nom'] . '</h5>';
-              echo '<img src="assets/img/' . $row['image'] . '" class="card-img-top p-3 custom-image custom-image">';
-              echo '<div class="card-body">';
-              echo '<p class="card-text">' . $row['description'] . '</p>';
+              echo '<div class="col-md-4 mb-4 carte">';
+              echo '<div class="card">';
+              echo '<div class="photo-container">';
+              echo '<img src="assets/img/' . $row['image'] . '" class="card-img-top" alt="...">';
+              echo '</div>';
+              echo '<div class="card-body menu">';
+              echo '<h5 class="card-title">' . $row['nom'] . '</h5>';
+              echo '<p class="card-text text-center">' . $row['description'] . '</p>';
               echo '<br>';
-              echo '<p class="card-text text-right">' . $row['prix'] . '€</p>';
+              echo '<p class="card-text">' . $row['prix'] . '€</p>';
               echo '</div>';
               echo '</div>';
-              echo '</div>';     
+              echo '</div>';
+              
             }
           }
         ?>

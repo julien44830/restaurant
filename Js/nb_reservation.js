@@ -1,3 +1,35 @@
+// Récupérer la date actuelle
+var date = new Date();
+
+// Récupérer le décalage horaire du fuseau horaire de l'utilisateur
+var offset = date.getTimezoneOffset();
+
+// Convertir le décalage en millisecondes
+var offsetMs = offset * 60 * 1000;
+
+// Ajouter ou soustraire le décalage à la date actuelle pour obtenir la date locale
+var localDate = new Date(date.getTime() - offsetMs);
+
+// Récupérer l'élément input date
+var inputDate = document.getElementById("reservation-date");
+
+// Définir la valeur minimale de l'attribut min sur la date locale
+inputDate.min = localDate.toISOString().slice(0, 10);
+
+// Récupérer l'élément input date
+var inputDate = document.getElementById("reservation-date");
+
+// Définir la valeur minimale de l'attribut min sur la date locale
+inputDate.min = localDate.toISOString().slice(0, 10);
+
+
+
+
+
+
+
+
+
 window.addEventListener('load', function() {
   console.log('test2');
   const dateInput = document.getElementById('reservation-date');

@@ -5,13 +5,16 @@ include 'config/conn_bdd.php';
 include 'config/start_session.php';
 include 'config/delete_reservation.php';
 include 'get_reservation_count.php';
+date_default_timezone_set('Europe/Paris');
 
 if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
   include 'reservation_admin.php';
 
 }elseif (isset($_SESSION['lastname'])) {	
 	$lastname = $_SESSION['lastname'];
-	$user_id = $_SESSION['user_id'];
+	$user_id = $_SESSION['user_id'];	
+  $username = $_SESSION['username'];
+
   
   
   $sql = "SELECT * FROM reservation WHERE id_user = '$user_id'";
@@ -43,8 +46,10 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
         <tr>
           <th>Date :</th>
           <td>
-            <input type="date" class="form-control" name="date" value="' . date('Y-m-d') . '" id="reservation-date">
-            <p id="nb_reservations_restantes"></p>
+          <input type="hidden" name="timezone_offset" id="timezone-offset" value="">
+
+          <input type="date" class="form-control" name="date" value="' . date('Y-m-d') . '" min="' . date('Y-m-d') . '" id="reservation-date">
+          <p id="nb_reservations_restantes"></p>
           </td>
         </tr>
         <tr>

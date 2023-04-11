@@ -22,13 +22,13 @@ if ($nb_reservations >= 20) {
     $sql = "INSERT INTO reservation (id_user, username, user_lastname, tel, date, time, nb_default_user, user_allergy) 
     VALUES ('$user_id', '$username', '$user_lastname', '$tel', '$date', '$time', '$nb_default_user', '$user_allergy')";
 
-if ($conn->query($sql) === TRUE) {
-header("Location: reservation.php");
-} else {
-echo "Erreur : " . $sql . "<br>" . $conn->error;
-}
+    if ($conn->query($sql) === TRUE) {
+    header("Location: reservation.php");
+    } else {
+    echo "Erreur : " . $sql . "<br>" . $conn->error;
+    }
 
-$conn->close();
+    $conn->close();
 
 }
 

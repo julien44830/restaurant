@@ -12,6 +12,10 @@ body {
 	padding-bottom: 9rem;
 }
 
+.main_indes{
+	margin-bottom: 1rem;
+}
+
 header{
 	margin-top: -40px;
 }
@@ -50,3 +54,30 @@ footer{
 	}
 	
 }
+
+
+
+.carte {
+  transition: all 0.2s ease-in-out;
+}
+
+.carte:hover {
+  transform: scale(1.1);
+	background-color: rgba(0, 0, 0, 0.7);
+	color: white;
+	padding: 0%;
+	border-radius: 5px;
+}
+
+.menu {
+  transition: all 0.3s ease-in-out;
+}
+
+.carte:hover .menu {
+  display: block;
+}
+
+.photo-container {
+  overflow: hidden;
+}
+
