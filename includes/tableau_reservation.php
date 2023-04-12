@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 if ($result->num_rows > 0) {
 
@@ -26,7 +28,7 @@ if ($result->num_rows > 0) {
 
             echo '<td>' . $row['date'] . '</td>';
             echo '<td>' . $row['time'] . '</td>';
-            echo '<td class="text-center">' . $row['nb_default_user'] . '</td>';
+            echo '<td class="text-center">' . $row['nb_couverts'] . '</td>';
             echo '<td>' . $row['user_allergy'] . '</td>';
 						echo '<td>' . $row['tel'] . '</td>';
 						echo '<td>' . $row['username'] . '</td>';

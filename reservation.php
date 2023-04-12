@@ -7,6 +7,9 @@ include 'config/delete_reservation.php';
 include 'get_reservation_count.php';
 date_default_timezone_set('Europe/Paris');
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
   include 'reservation_admin.php';
 
@@ -25,7 +28,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
     include 'includes/tableau_reservation.php';
 
     echo '
-    <form class="form_reserv" action="reservation_action.php?t='.time().'" method="post">
+    <form class="form_reserv mx-auto col-lg-6" action="reservation_action.php?t='.time().'" method="post">
       <table class="table table-bordered">
         <tr>
           <th>Nom :</th>
@@ -41,8 +44,11 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
         </tr>
         <tr>
           <th>Nombre de couverts :</th>
-          <td><input type="text" class="form-control" name="nb_default_user" value="' . htmlspecialchars($nb_default_user) . '"></td>
-        </tr>
+            <td>
+            <select id="nb_couverts" name="nb_couverts">
+
+          </select>    
+          </td>
         <tr>
           <th>Date :</th>
           <td>
@@ -84,8 +90,8 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
         <input class="d-none" type="text" name="user_id" value="' . htmlspecialchars($user_id) . '" readonly>
     
       </table>
-      <input class="btn btn-success" type="submit" value="Réserver">
-    </form>';
+      <input id="btn" class="btn btn-success" type="submit" value="Réserver" >
+      </form>';
     
 
 } else {

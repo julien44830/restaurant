@@ -1,58 +1,99 @@
-// Récupérer la date actuelle
-var date = new Date();
+const heureFermeture = new Date();
+heureFermeture.setHours(23, 15); // Remplacez ces valeurs par l'heure de fermeture de votre restaurant
 
-// Récupérer le décalage horaire du fuseau horaire de l'utilisateur
-var offset = date.getTimezoneOffset();
+const heureActuelle = new Date();
 
-// Convertir le décalage en millisecondes
-var offsetMs = offset * 60 * 1000;
+const dateInput = document.getElementById('reservation-date');
+const selectHeure = document.querySelector('select[name="time"]');
 
-// Ajouter ou soustraire le décalage à la date actuelle pour obtenir la date locale
-var localDate = new Date(date.getTime() - offsetMs);
+dateInput.addEventListener('change', function() {
+  const selectedDate = new Date(dateInput.value);
+  if (selectedDate < heureActuelle || heureActuelle >= heureFermeture) {
+    selectHeure.style.display = 'none';
+  } else {
+    selectHeure.style.display = 'block';
+  }
+});
 
-// Récupérer l'élément input date
-var inputDate = document.getElementById("reservation-date");
-
-// Définir la valeur minimale de l'attribut min sur la date locale
-inputDate.min = localDate.toISOString().slice(0, 10);
-
-// Récupérer l'élément input date
-var inputDate = document.getElementById("reservation-date");
-
-// Définir la valeur minimale de l'attribut min sur la date locale
-inputDate.min = localDate.toISOString().slice(0, 10);
-
-
-
-
-
-
-
+// Vérifier la date de réservation par défaut
+if (heureActuelle >= heureFermeture) {
+  selectHeure.style.display = 'none';
+} else {
+  const selectedDate = new Date(dateInput.value);
+  if (selectedDate < heureActuelle || heureActuelle >= heureFermeture) {
+    selectHeure.style.display = 'none';
+  } else {
+    selectHeure.style.display = 'block';
+  }
+}
 
 
 window.addEventListener('load', function() {
   console.log('test2');
   const dateInput = document.getElementById('reservation-date');
+  const nbCouvertsSelect = document.getElementById('nb_couverts');
   const nbReservationsRestantesElement = document.querySelector('#nb_reservations_restantes');
+
+  function updateSelectOptions(nbCouvertsRestants) {
+    nbCouvertsSelect.innerHTML = '';
+    for (let i = 1; i <= nbCouvertsRestants; i++) {
+      const option = document.createElement('option');
+      option.value = i;
+      option.text = i;
+      nbCouvertsSelect.appendChild(option);
+    }
+  };
 
   function updateReservationsCount(date) {
     // Envoyer une requête AJAX pour récupérer le nombre de réservations pour cette date
     fetch('get_reservation_count.php?date=' + date)
       .then(response => response.json())
       .then(data => {
-        // Afficher le nombre de réservations restantes
-        const nb_reservations_restantes = 20 - data.count;
-        const message = `Il reste ${nb_reservations_restantes} réservations pour le ${date}`;
-        nbReservationsRestantesElement.textContent = message;
+        console.log(data)
+        // Afficher le nombre de personnes restantes
+        const capacite_max = 20; // Définir la capacité maximale de personnes par jour
+        const nb_personnes = data.nb_couverts;
+        const nb_personnes_restantes = capacite_max - nb_personnes;
+
+        if (data === null) {
+          console.error('La requête a retourné un résultat invalide.');
+          return;
+        }
+
+        // Vérifier que le nb_couverts est présent dans le résultat
+        if (!('nb_couverts' in data)) {
+          console.error('Le champ nb_couverts est manquant dans le résultat de la requête.');
+          return;
+        }
+
+        if (nb_personnes_restantes <= 0) {
+          const btn = document.getElementsByClassName("btn");
+          console.log(btn);
+          btn[0].disabled = true;
+          nbReservationsRestantesElement.textContent = 'le nombre de réservation maximum pour ce jour est atteind';
+          console.log(nb_personnes_restantes);
+        } else {
+          const btn = document.getElementsByClassName("btn");
+
+          const message = `Il reste ${nb_personnes_restantes} places pour le ${date}`;
+
+          nbReservationsRestantesElement.textContent = message;
+          btn[0].disabled = false;
+
+          // Mettre à jour la liste déroulante du nombre de couverts
+          updateSelectOptions(nb_personnes_restantes);
+        }
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error('Une erreur s\'est produite lors de la récupération des données : ', error);
+      });
   }
 
-  // Obtenir la date actuelle et mettre à jour le nombre de réservations restantes
+  // Obtenir la date actuelle et mettre à jour le nombre de réservations restantes et la liste déroulante du nombre de couverts
   const currentDate = new Date().toISOString().split('T')[0];
   updateReservationsCount(currentDate);
 
-  // Écouter les changements de la date sélectionnée et mettre à jour le nombre de réservations restantes
+  // Écouter les changements de la date sélectionnée et mettre à jour le nombre de réservations restantes et la liste déroulante du nombre de couverts
   dateInput.addEventListener('change', function() {
     const selectedDate = dateInput.value;
     updateReservationsCount(selectedDate);

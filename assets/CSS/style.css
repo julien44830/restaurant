@@ -55,7 +55,14 @@ footer{
 	
 }
 
+.table-form {
+  border: none;
+}
 
+.table-form th,
+.table-form td {
+  border: none;
+}
 
 .carte {
   transition: all 0.2s ease-in-out;

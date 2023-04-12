@@ -111,4 +111,11 @@ if (isset($_SESSION['legend'])) {
   $legend = "";
 }
 
+if (isset($_POST['nb_couverts'])) {
+  $nb_couverts = $_POST['nb_couverts'];
+} else {
+  $nb_couverts = 0; 
+}
+
+
 ?>

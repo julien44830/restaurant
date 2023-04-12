@@ -17,23 +17,26 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']){
 
 	
 	echo '
-	<form class="form_reserv" action="reservation_action.php?t='.time().'" method="post">
-		<table class="table table-bordered">
-			<tr>
-				<th>Nom :</th>
-				<td><input type="text" class="form-control" name="username" value="' . htmlspecialchars($username) . '"></td>
+	<form class="form_reserv card  mx-auto col-lg-6 " action="reservation_action.php?t='.time().'" method="post">
+		<table class="table border-0 table-bordered">
+			<tr class="border-0">
+				<th class="border-0">Nom :</th>
+				<td class="border-0"><input type="text" class="form-control" name="username" value="' . htmlspecialchars($username) . '"></td>
 			</tr>
-			<tr>
-				<th>Prénom :</th>
+			<tr class="border-0">
+				<th class="border-0">Prénom :</th>
 				<td><input type="text" class="form-control" name="user_lastname" value="' . htmlspecialchars($lastname) . '"></td>
 			</tr>
 			<tr>
 				<th>Tel :</th>
 				<td><input type="text" class="form-control" name="tel" value="' . htmlspecialchars($tel) . '"></td>
 			</tr>
-			<tr>
+			<tr class="border-0">
 				<th>Nombre de couverts :</th>
-				<td><input type="text" class="form-control" name="nb_default_user" value="' . htmlspecialchars($nb_default_user) . '"></td>
+            <td>
+            <select id="nb_couverts" name="nb_couverts" >
+            </select>        
+          </td>
 			</tr>
 			<tr>
 				<th>Date :</th>
