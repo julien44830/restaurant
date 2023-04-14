@@ -28,7 +28,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
     include 'includes/tableau_reservation.php';
 
     echo '
-    <form class="form_reserv mx-auto col-lg-6" action="reservation_action.php?t='.time().'" method="post">
+    <form class="form_reserv card mx-auto col-lg-6" action="reservation_action.php?t='.time().'" method="post">
       <table class="table table-bordered">
         <tr>
           <th>Nom :</th>
