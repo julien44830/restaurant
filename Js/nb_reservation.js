@@ -6,28 +6,29 @@ heureFermeture.setHours(23, 15); // Remplacez ces valeurs par l'heure de fermetu
 
 const selectHeure = document.querySelector('select[name="time"]');
 
+function updateHeureOptions() {
+  const selectedDate = new Date(dateInput.value);
+  const heures = selectHeure.options;
 
+  for (let i = 0; i < heures.length; i++) {
+    const heureOption = new Date(selectedDate.getTime());
+    const heureParts = heures[i].value.split(':');
+    heureOption.setHours(heureParts[0], heureParts[1]);
+
+    if (heureOption <= heure_Actuelle) {
+      heures[i].style.display = 'none';
+    } else {
+      heures[i].style.display = 'block';
+    }
+  }
+}
 
 dateInput.addEventListener('change', function() {
-  const selectedDate = new Date(dateInput.value);
-  if (selectedDate < heure_Actuelle || heure_Actuelle >= heureFermeture) {
-    selectHeure.style.display = 'none';
-  } else {
-    selectHeure.style.display = 'block';
-  }
+  updateHeureOptions();
 });
 
 // Vérifier la date de réservation par défaut
-if (heure_Actuelle >= heureFermeture) {
-  selectHeure.style.display = 'none';
-} else {
-  const selectedDate = new Date(dateInput.value);
-  if (selectedDate < heure_Actuelle || heure_Actuelle >= heureFermeture) {
-    selectHeure.style.display = 'none';
-  } else {
-    selectHeure.style.display = 'block';
-  }
-}
+updateHeureOptions();
 
 window.addEventListener('load', function() {
   console.log('test2');
