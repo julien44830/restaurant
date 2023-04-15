@@ -4,16 +4,12 @@ body {
 	margin-top: 40px;
 	font-family: 'Dancing Script', cursive;	
 	font-weight:700; 
-	background: linear-gradient(to  bottom , #bc7f43, #eee6d8);
+	background: linear-gradient(to  bottom , #e1a624, #80596d);
 	background-attachment: fixed;
 }
 .admin{
 	padding-top: 60px;
 	padding-bottom: 9rem;
-}
-
-.main_indes{
-	margin-bottom: 1rem;
 }
 
 header{
@@ -55,29 +51,46 @@ footer{
 	
 }
 
-.table-form {
-  border: none;
+.anim{
+  object-fit: cover;
+  box-shadow: 1px 1px 10px white;
+  animation: color-change 15s infinite ease-in-out;
 }
 
-.table-form th,
-.table-form td {
-  border: none;
+@keyframes color-change {
+  0% {
+   background:#e1a624 ;
+  }
+  33% {
+   background:#c18952  ;
+  }
+  66% {
+   background:#80596d  ;
+  }
+  100% {
+   background:#e1a624;
+  }
+
 }
 
 .carte {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease;
 }
 
 .carte:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 	background-color: rgba(0, 0, 0, 0.7);
 	color: white;
 	padding: 0%;
 	border-radius: 5px;
 }
 
+.card:hover{
+animation: none;
+}
+
 .menu {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease;
 }
 
 .carte:hover .menu {
@@ -87,4 +100,5 @@ footer{
 .photo-container {
   overflow: hidden;
 }
+
 

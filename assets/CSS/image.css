@@ -16,24 +16,6 @@
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
 }
-.photo-container {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  margin: 10px 0px 10px 0px;
-}
-
-.photo-container::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 97.5%;
-  height: 91%;
-  background-color: rgba(0,0,0,0.5);
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0;
-}
 
 .photo-container:hover::before {
   opacity: 1;
@@ -54,49 +36,3 @@
 .photo-container:hover .title {
   transform: translateY(0%);
 }
-
-.swiper-container {
-  overflow-x: hidden;
-}
-
-.photo-container:hover::before {
-  opacity: 1;
-}
-
-.title {
-  position: absolute;
-  bottom: 50%;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  color: #fff;
-  text-align: center;
-  transform: translateY(500%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.photo-container:hover .title {
-  transform: translateY(0%);
-}
-
-.photo-container {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  margin: 10px 0px 10px 0px;
-}
-
-.photo-container::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 97.5%;
-  height: 91%;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0;
-}
-
-
-

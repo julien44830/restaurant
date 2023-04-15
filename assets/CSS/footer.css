@@ -1,6 +1,6 @@
 .footer-basic {
-	background-color: #e5d3bd;
-  color:#4b4c4d;
+  background-color: #926760;
+  color:white;
   position: fixed;
   bottom: 0px;
   width: 100%;  
@@ -42,21 +42,21 @@
     display:inline-block;
     text-align:center;
     border-radius:50%;
-    border:1px solid #4b4c4d;
+    border:1px solid white;
     margin:0 8px;
     color:inherit;
     opacity:0.75;
   }
   
   .footer-basic .social > a:hover {
-    opacity:0.9;
+    opacity:0.7;
   }
   
   .footer-basic .copyright {
     margin-top:15px;
     text-align:center;
     font-size:13px;
-    color:#4b4c4d;
+    color:white;
     margin-bottom:0;
   }
   

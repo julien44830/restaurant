@@ -28,39 +28,39 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
     include 'includes/tableau_reservation.php';
 
     echo '
-    <form class="form_reserv card mx-auto col-lg-6" action="reservation_action.php?t='.time().'" method="post">
-      <table class="table table-bordered">
-        <tr>
-          <th>Nom :</th>
-          <td><input type="text" class="form-control" name="username" value="' . htmlspecialchars($username) . '"></td>
+    <form class="form_reserv card mx-auto col-md-4 card" action="reservation_action.php?t='.time().'" method="post">
+      <table class="table border-0 table-bordered">
+        <tr class="border-0">
+          <th class="border-0">Nom :</th>
+          <td class="border-0"><input type="text" class="form-control" name="username" value="' . htmlspecialchars($username) . '"></td>
         </tr>
-        <tr>
-          <th>Prénom :</th>
-          <td><input type="text" class="form-control" name="user_lastname" value="' . htmlspecialchars($lastname) . '"></td>
+        <tr class="border-0">
+          <th class="border-0">Prénom :</th>
+          <td class="border-0"><input type="text" class="form-control" name="user_lastname" value="' . htmlspecialchars($lastname) . '"></td>
         </tr>
-        <tr>
-          <th>Tel :</th>
-          <td><input type="text" class="form-control" name="tel" value="' . htmlspecialchars($tel) . '"></td>
+        <tr class="border-0">
+          <th class="border-0">Tel :</th>
+          <td class="border-0"><input type="text" class="form-control" name="tel" value="' . htmlspecialchars($tel) . '"></td>
         </tr>
-        <tr>
-          <th>Nombre de couverts :</th>
-            <td>
+        <tr class="border-0">
+          <th class="border-0">Nombre de couverts :</th>
+            <td class="border-0">
             <select id="nb_couverts" name="nb_couverts">
 
           </select>    
           </td>
-        <tr>
-          <th>Date :</th>
-          <td>
+        <tr class="border-0">
+          <th class="border-0">Date :</th>
+          <td class="border-0">
           <input type="hidden" name="timezone_offset" id="timezone-offset" value="">
 
           <input type="date" class="form-control" name="date" value="' . date('Y-m-d') . '" min="' . date('Y-m-d') . '" id="reservation-date">
           <p id="nb_reservations_restantes"></p>
           </td>
         </tr>
-        <tr>
-          <th>Heure :</th>
-          <td>
+        <tr class="border-0">
+          <th class="border-0">Heure :</th>
+          <td class="border-0">
             <select class="form-control" name="time">';
             $start_time_1 = strtotime("12:00");
             $end_time_1 = strtotime("13:15");
@@ -81,9 +81,9 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
             </select>
           </td>
         </tr>
-        <tr>
-          <th>Allergie :</th>
-          <td><input type="text" class="form-control" name="user_allergy" value="'.htmlspecialchars($user_allergy).'"></td>
+        <tr class="border-0">
+          <th class="border-0">Allergie :</th>
+          <td class="border-0"><input type="text" class="form-control" name="user_allergy" value="'.htmlspecialchars($user_allergy).'"></td>
         </tr>
 
         <label class="d-none" for="user_id">Id de l\'utilisateur :</label>
