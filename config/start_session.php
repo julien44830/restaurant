@@ -117,5 +117,4 @@ if (isset($_POST['nb_couverts'])) {
   $nb_couverts = 0; 
 }
 
-
 ?>

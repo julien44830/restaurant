@@ -55,30 +55,72 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
       </div>
     
       <div class="row pb-5">
-        <?php
-          if ($result_plat->num_rows > 0) {
-            while($row = $result_plat->fetch_assoc()) {
-              echo '<div class="col-md-4 mb-4 carte">';
-              echo '<div class="card">';
-              echo '<div class="photo-container">';
-              echo '<img src="assets/img/' . $row['image'] . '" class="card-img-top" alt="...">';
-              echo '</div>';
-              echo '<div class="card-body menu">';
-              echo '<h5 class="card-title">' . $row['nom'] . '</h5>';
-              echo '<p class="card-text text-center">' . $row['description'] . '</p>';
-              echo '<br>';
-              echo '<p class="card-text">' . $row['prix'] . '€</p>';
-              echo '</div>';
-              echo '</div>';
-              echo '</div>';
-              
-            }
-          }
-        ?>
-      </div>
-    </div>
+  <?php
+
+
+
+  if ($conn === false) {
+    die('Erreur de connexion à la base de données' . mysqli_connect_error());
+  } else {
+    if (isset($_POST['categorie'])) {
+      $selected_categorie = $_POST['categorie'];
+      if ($selected_categorie != '') {
+        $sql = "SELECT * FROM carte_plat WHERE categorie = '$selected_categorie' ORDER BY nom ASC";
+      } else {
+        $sql = "SELECT * FROM carte_plat WHERE categorie IN ('entree', 'plat', 'dessert') ORDER BY categorie ASC, nom ASC";
+      }
+    } else {
+      $sql = "SELECT * FROM carte_plat ORDER BY categorie ASC, nom ASC";
+    }
+    $resultat = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($resultat) > 0) {
+      $categorie = '';
+      while ($row = mysqli_fetch_assoc($resultat)) {
+        if ($row['categorie'] != $categorie) {
+          $categorie = $row['categorie'];
+          echo '<h2>' . ucfirst($categorie) . '</h2>';
+        } else if ($selected_categorie == $categorie && $categorie != '') {
+          echo '<h2>' . ucfirst($categorie) . '</h2>';
+        }
+        echo '<div class="col-md-4 mb-4 carte">';
+        echo '<div class="card">';
+        echo '<div class="photo-container">';
+        echo '<img src="assets/img/' . $row['image'] . '" class="card-img-top" alt="...">';
+        echo '</div>';
+        echo '<div class="card-body menu">';
+        echo '<h5 class="card-title">' . $row['nom'] . '</h5>';
+        echo '<p class="card-text text-center">' . $row['description'] . '</p>';
+        echo '<br>';
+        echo '<p class="card-text">' . $row['prix'] . '€</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+      }
+    } else {
+      echo '<p>Aucun plat trouvé.</p>';
+      echo '<br> ';
+    }
+  }
+?>
+<!-- Formulaire de sélection de catégorie -->
+<form method="POST">
+  <label for="categorie">Sélectionnez une catégorie :</label>
+  <select name="categorie" id="categorie">
+    <option value="">Toutes les catégories</option>
+    <option value="entree">Entrée</option>
+    <option value="plat">Plat</option>
+    <option value="dessert">Dessert</option>
+  </select>
+  <button type="submit">Afficher</button>
+</form>
+
+</div> <!-- fermeture de la balise <div> contenant les éléments de la carte -->
+
+
+
   <?php
   }
 
-  include 'templates/footer.php';
+  // include 'templates/footer.php';
 ?>

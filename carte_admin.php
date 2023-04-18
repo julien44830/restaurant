@@ -60,6 +60,7 @@ $result_plat = $conn->query($sql_plat);
 		<table class="table">
 			<thead>
 				<tr>
+					<th>type</th>
 					<th>Nom</th>
 					<th>Description</th>
 					<th>Prix</th>
@@ -72,6 +73,7 @@ $result_plat = $conn->query($sql_plat);
 					if ($result_plat->num_rows > 0) {
 						while($row = $result_plat->fetch_assoc()) {
 							echo '<tr>';
+							echo '<td>' . $row['categorie'] . '</td>';
 							echo '<td>' . $row['nom'] . '</td>';
 							echo '<td>' . $row['description'] . '</td>';
 							echo '<td>' . $row['prix'] . '€</td>';
@@ -114,6 +116,16 @@ $result_plat = $conn->query($sql_plat);
 
     	<h2>Ajouter un plat</h2>
     	<form method="POST" action="traitement_carte.php" enctype="multipart/form-data">
+			
+			<div class="form-group">
+				<label for="categorie">type</label>
+				<select name="categorie" id="categorie">
+					<option value="entrée">entrée</option>
+					<option value="plat">plat</option>
+					<option value="dessert">dessert</option>
+				</select>        
+			</div>
+
         <div class="form-group">
           <label for="nom">Nom</label>
           <input type="text" class="form-control" name="nom" required>

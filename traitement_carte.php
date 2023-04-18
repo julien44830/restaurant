@@ -7,6 +7,7 @@ if (isset($_POST['add_plat'])) {
   $description = $_POST['description'];
   $prix = $_POST['prix'];
   $image = '';
+  $categorie = $_POST['categorie'];
 
   // Vérifier si un fichier a été téléchargé
   if (isset($_FILES['image']) && $_FILES['image']['error'] == UPLOAD_ERR_OK) {
@@ -16,8 +17,8 @@ if (isset($_POST['add_plat'])) {
       move_uploaded_file($_FILES['image']['tmp_name'], $image_dir . $image);
   }
 
-  $sql = "INSERT INTO carte_plat (nom, description, prix, image) 
-          VALUES ('$nom', '$description', '$prix', '$image')";
+  $sql = "INSERT INTO carte_plat (nom, description, prix, image, categorie) 
+          VALUES ('$nom', '$description', '$prix', '$image', '$categorie')";
 
   if ($conn->query($sql) === TRUE) {
       header("Location: carte.php");
