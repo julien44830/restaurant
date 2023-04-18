@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 .footer-basic {
   background-color: #926760;
   color:white;
+=======
+footer{
+	background-color: #e5d3bd;
+  color:#4b4c4d;
+>>>>>>> 6f731976dc3980e4a846dc6d2df58519df220440
   position: fixed;
   bottom: 0px;
   width: 100%;  
@@ -62,4 +68,25 @@
   
   /* Credit to https://epicbootstrap.com/snippets/footer-basic */
 
+
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+  
+  .marquee p {
+    display: inline-block;
+    /* padding-left:50%; */
+    animation: defilement 25s linear infinite;
+  }
+  
+  @keyframes defilement {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
   
