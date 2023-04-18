@@ -117,4 +117,11 @@ if (isset($_POST['nb_couverts'])) {
   $nb_couverts = 0; 
 }
 
+if (isset($_POST['result_menu'])) {
+  $result_menu = $_POST['result_menu'];
+} else {
+  $result_menu = ""; 
+}
+
+
 ?>

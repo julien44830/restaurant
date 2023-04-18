@@ -58,7 +58,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
   <?php
 
 
-
+$selected_categorie = '';
   if ($conn === false) {
     die('Erreur de connexion à la base de données' . mysqli_connect_error());
   } else {
