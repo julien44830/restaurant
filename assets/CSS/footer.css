@@ -1,6 +1,6 @@
 footer{
-	background-color: #e5d3bd;
-  color:#4b4c4d;
+	background-color: #926760;
+  color:white;
   position: fixed;
   bottom: 0px;
   width: 100%;  
@@ -61,18 +61,23 @@ footer{
   }
   
   /* Credit to https://epicbootstrap.com/snippets/footer-basic */
-
-
+  
   .marquee {
-    overflow: hidden;
     white-space: nowrap;
     position: relative;
+    animation: defilement 25s linear infinite;
   }
   
-  .marquee p {
-    display: inline-block;
-    /* padding-left:50%; */
-    animation: defilement 25s linear infinite;
+  .marquee span {
+    display: inline;
+    padding-left: 30px;
+  }
+  
+  .marquee>span>p{
+    display: inline;
+    margin-left: 1em;
+    font-size: 2em;
+    font-weight:100 ;
   }
   
   @keyframes defilement {
@@ -80,7 +85,6 @@ footer{
       transform: translateX(100%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(-250%);
     }
   }
-  

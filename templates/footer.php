@@ -1,7 +1,16 @@
 <footer class="footer-basic">
 
 	<div class="marquee">
-		<p>lundi 12h/14h 19h/23h - mardi 12h/14h 19h/23h - mercredi 12h/14h 19h/23h - jeudi 12h/14h 19h/23h - endredi 12h/14h 19h/23h - samedi 12h/14h 19h/23h - dimanche 12h/14h</p>
+		<span>
+			<span>lundi 12-14h 19-23h</span>
+			<span>mardi 12-14h 19-23h</span>
+			<span>mercredi 12-14h 19-23h</span>
+			<span>jeudi 12-14h 19-23h</span>
+			<span>vendredi 12-14h 19-23h</span>
+			<span>samedi 12-14h 19-23h</span>
+			<span>dimanche 12-14h</span>
+		</span>
+		
 	</div>
 
 	<div>
