@@ -1,15 +1,18 @@
+	<?php
+$sql = "SELECT * FROM horaires ORDER BY FIELD(jour_de_la_semaine, 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche')";
+$result = mysqli_query($conn, $sql);
+$horaires = mysqli_fetch_all($result, MYSQLI_ASSOC);
+?>
+
 <footer class="footer-basic">
 
 	<div class="marquee">
-		<span>
-			<span>lundi 12-14h 19-23h</span>
-			<span>mardi 12-14h 19-23h</span>
-			<span>mercredi 12-14h 19-23h</span>
-			<span>jeudi 12-14h 19-23h</span>
-			<span>vendredi 12-14h 19-23h</span>
-			<span>samedi 12-14h 19-23h</span>
-			<span>dimanche 12-14h</span>
-		</span>
+<span>
+    <?php foreach ($horaires as $horaire): ?>
+        <span><?php echo ucfirst($horaire['jour_de_la_semaine']) . ' ' . substr($horaire['heure_ouverture_midi'], 0, 5) . '-' . substr($horaire['heure_fermeture_midi'], 0, 5); ?><?php if ($horaire['heure_ouverture_soir'] && $horaire['heure_fermeture_soir']) {echo ' ' . substr($horaire['heure_ouverture_soir'], 0, 5) . '-' . substr($horaire['heure_fermeture_soir'], 0, 5);} ?></span>
+    <?php endforeach; ?>
+</span>
+
 		
 	</div>
 
