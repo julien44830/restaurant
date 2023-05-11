@@ -8,6 +8,12 @@ if (isset($_POST["submit_horaires"])) {
         $heure_ouverture_soir = $_POST[$jour . '_ouverture_soir'];
         $heure_fermeture_soir = $_POST[$jour . '_fermeture_soir'];
 
+        // Conversion des chaînes de caractères en objets DateTime
+$date_ouverture_midi = DateTime::createFromFormat('H:i', $heure_ouverture_midi);
+$date_fermeture_midi = DateTime::createFromFormat('H:i', $heure_fermeture_midi);
+$date_ouverture_soir = DateTime::createFromFormat('H:i', $heure_ouverture_soir);
+$date_fermeture_soir = DateTime::createFromFormat('H:i', $heure_fermeture_soir);
+
         // Vérification si des horaires existent déjà pour le jour en question
         $sql = "SELECT * FROM horaires WHERE jour_de_la_semaine = '$jour'";
         $result = mysqli_query($conn, $sql);

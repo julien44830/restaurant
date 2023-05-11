@@ -27,25 +27,111 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
             $result = mysqli_query($conn, $sql);
             $horaires = mysqli_fetch_assoc($result);
             ?>
+
+<?php if (!is_null($infos)): 
+if (is_array($infos)) {
+    foreach ($infos as $jour => $horaires) { ?>
+        <span>
+        <?php foreach ($infos as $jour => $horaires): ?>
+            <?php if ($horaires['ouverture_midi'] != '' || $horaires['ouverture_soir'] != ''): ?>
+                <span><?php echo ucfirst($jour); ?> :
+                    <?php if ($horaires['ouverture_midi'] != ''): ?>
+                        <?php echo $horaires['ouverture_midi']; ?>-<?php echo $horaires['fermeture_midi']; ?>
+                    <?php endif; ?>
+                    <?php if ($horaires['ouverture_soir'] != ''): ?>
+                        <?php if ($horaires['ouverture_midi'] != ''): ?> /
+                        <?php endif; ?>
+                        <?php echo $horaires['ouverture_soir']; ?>-<?php echo $horaires['fermeture_soir']; ?>
+                    <?php endif; ?>
+                </span>
+            <?php else: ?>
+                <span><?php echo ucfirst($jour); ?> : Fermé</span>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </span>
+<?php     }
+} else {
+    echo "Horaires non disponibles";
+}?>
+<?php endif; ?>
+
+
+
+
+
+
+
             <tr>
                 <td><?php echo ucfirst($jour); ?></td>
                 <td>
-                    <input type="time" name="<?php echo $jour; ?>_ouverture_midi" value="<?php echo $horaires['heure_ouverture_midi']; ?>">
+                    <select name="<?php echo $jour; ?>_ouverture_midi">
+                        <option value="">Fermé</option>
+                        <?php for ($heure = 11; $heure <= 15; $heure++): ?>
+                            <?php for ($minute = 0; $minute <= 45; $minute += 15): ?>
+                                <?php $heure_affichee = sprintf("%02d", $heure) . ':' . sprintf("%02d", $minute); ?>
+                                <option value="<?php echo $heure_affichee; ?>" <?php if ($horaires['heure_ouverture_midi'] == $heure_affichee) { echo 'selected'; } ?>>
+                                    <?php echo $heure_affichee; ?>
+                                </option>
+                            <?php endfor; ?>
+                        <?php endfor; ?>
+                    </select>
                 </td>
                 <td>
-                    <input type="time" name="<?php echo $jour; ?>_fermeture_midi" value="<?php echo $horaires['heure_fermeture_midi']; ?>">
+                    <select name="<?php echo $jour; ?>_fermeture_midi">
+                        <option value="">Fermé</option>
+                        <?php for ($heure = 11; $heure <= 15; $heure++): ?>
+                            <?php for ($minute = 0; $minute <= 45; $minute += 15): ?>
+                                <?php $heure_affichee = sprintf("%02d", $heure) . ':' . sprintf("%02d", $minute); ?>
+                                <option value="<?php echo $heure_affichee; ?>" <?php if ($horaires['heure_fermeture_midi'] == $heure_affichee) { echo 'selected'; } ?>>
+                                    <?php echo $heure_affichee; ?>
+                                </option>
+                            <?php endfor; ?>
+                        <?php endfor; ?>
+                    </select>
                 </td>
                 <td>
-                    <input type="time" name="<?php echo $jour; ?>_ouverture_soir" value="<?php echo $horaires['heure_ouverture_soir']; ?>">
+                    <select name="<?php echo $jour; ?>_ouverture_soir">
+                        <option value="">Fermé</option>
+                        <?php for ($heure = 18; $heure <= 23; $heure++): ?>
+                            <?php for ($minute = 0; $minute <= 45; $minute += 15): ?>
+                                <?php $heure_affichee = sprintf("%02d", $heure) . ':' . sprintf("%02d", $minute); ?>
+                                <option value="<?php echo $heure_affichee; ?>" <?php if ($horaires['heure_ouverture_soir'] == $heure_affichee) { echo 'selected'; } ?>>
+                                    <?php echo $heure_affichee; ?>
+                                </option>
+                            <?php endfor; ?>
+                        <?php endfor; ?>
+                    </select>
                 </td>
                 <td>
-                    <input type="time" name="<?php echo $jour; ?>_fermeture_soir" value="<?php echo $horaires['heure_fermeture_soir']; ?>">
+                    <select name="<?php echo $jour; ?>_fermeture_soir">
+                        <option value="">Fermé</option>
+                        <?php for ($heure = 18; $heure <= 23; $heure++): ?>
+                            <?php for ($minute = 0; $minute <= 45; $minute += 15): ?>
+                                <?php $heure_affichee = sprintf("%02d", $heure) . ':' . sprintf("%02d", $minute); ?>
+                                <option value="<?php echo $heure_affichee; ?>" <?php if ($horaires['heure_fermeture_soir'] == $heure_affichee) { echo 'selected'; } ?>>
+                                    <?php echo $heure_affichee; ?>
+                                </option>
+                            <?php endfor; ?>
+                        <?php endfor; ?>
+                    </select>
                 </td>
             </tr>
         <?php endforeach; ?>
+        <tr>
+            <td colspan="5">
+                <label>
+                    <input type="checkbox" name="restaurant_ferme" <?php if ($infos['restaurant_ferme']) { echo 'checked'; } ?>>
+                    Restaurant fermé
+                </label>
+            </td>
+        </tr>
     </table>
     <button type="submit" name="submit_horaires">Enregistrer les horaires</button>
 </form>
+
+    <button type="submit" name="submit_horaires">Enregistrer les horaires</button>
+</form>
+
   
 </div>
 
