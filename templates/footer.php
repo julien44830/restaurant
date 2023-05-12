@@ -7,11 +7,27 @@ $horaires = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <footer class="footer-basic">
 
 	<div class="marquee">
-<span>
+	<span>
     <?php foreach ($horaires as $horaire): ?>
-        <span><?php echo ucfirst($horaire['jour_de_la_semaine']) . ' ' . substr($horaire['heure_ouverture_midi'], 0, 5) . '-' . substr($horaire['heure_fermeture_midi'], 0, 5); ?><?php if ($horaire['heure_ouverture_soir'] && $horaire['heure_fermeture_soir']) {echo ' ' . substr($horaire['heure_ouverture_soir'], 0, 5) . '-' . substr($horaire['heure_fermeture_soir'], 0, 5);} ?></span>
+        <?php $jour = ucfirst($horaire['jour_de_la_semaine']); ?>
+        <?php $ouvertureMidi = substr($horaire['heure_ouverture_midi'], 0, 5); ?>
+        <?php $fermetureMidi = substr($horaire['heure_fermeture_midi'], 0, 5); ?>
+        <?php $ouvertureSoir = substr($horaire['heure_ouverture_soir'], 0, 5); ?>
+        <?php $fermetureSoir = substr($horaire['heure_fermeture_soir'], 0, 5); ?>
+
+        <?php if ($horaire['ferme_midi'] && $horaire['ferme_soir']): ?>
+            <span><?php echo $jour . ' : Fermé toute la journée'; ?></span>
+        <?php elseif ($horaire['ferme_midi']): ?>
+            <span><?php echo $jour . ' : Fermé le midi ' . $ouvertureSoir . '-' . $fermetureSoir . ''; ?></span>
+        <?php elseif ($horaire['ferme_soir']): ?>
+            <span><?php echo $jour . ' :  ' . $ouvertureMidi . '-' . $fermetureMidi . ' Fermé le soir'; ?></span>
+        <?php else: ?>
+            <span><?php echo $jour . ' ' . $ouvertureMidi . '-' . $fermetureMidi; ?><?php if ($ouvertureSoir && $fermetureSoir) { echo ' ' . $ouvertureSoir . '-' . $fermetureSoir; } ?></span>
+        <?php endif; ?>
     <?php endforeach; ?>
 </span>
+
+
 
 		
 	</div>

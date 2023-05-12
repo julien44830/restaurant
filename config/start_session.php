@@ -123,10 +123,11 @@ if (isset($_POST['result_menu'])) {
   $result_menu = ""; 
 }
 
-if (isset($_POST['infos'])) {
-  $infos = $_POST['infos'];
+if (isset($_SESSION['infos'])) {
+  $infos = $_SESSION['infos'];
 } else {
   $infos = ""; 
 }
+
 
 ?>
