@@ -1,72 +1,53 @@
 <?php
 include 'templates/head.php';
 include 'templates/nav.php';
+include 'config/conn_bdd.php';
+
+$sql = "SELECT * FROM horaires ORDER BY FIELD(jour_de_la_semaine, 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche')";
+$result = mysqli_query($conn, $sql);
+$horaires = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
+
+
 
 <div class="container height_time pb">
     <div class="row">
         <div class="col-12">
             <h2 class="m-5">
-            Nous sommes ouvert tout les jours:
+                Nos horaires d'ouverture:
             </h2>
         </div>
     </div>
 
     <div class="row">
         <div class="col-12 col-md-8 col-lg-6 mx-auto">
-            <ul class="list-unstyled ">
+            <ul class="list-unstyled">
 
-                <li>
-                    <div class="d-flex justify-content-between">
-                        <span>lundi</span>
-                        <span>12h à 14h30 et de 19h à 23h</span>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="d-flex justify-content-between">
-                        <span>mardi</span>
-                        <span>12h à 14h30 et de 19h à 23h</span>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="d-flex justify-content-between">
-                        <span>mercredi</span>
-                        <span>12h à 14h30 et de 19h à 23h</span>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="d-flex justify-content-between">
-                        <span>jeudi</span>
-                        <span>12h à 14h30 et de 19h à 23h</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="d-flex justify-content-between">
-                        <span>vendredi</span>
-                        <span>12h à 14h30 et de 19h à 23h</span>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="d-flex justify-content-between">
-                        <span>samedi</span>
-                        <span>12h à 14h30 et de 19h à 23h</span>
-                    </div>
-                </li>
-
-                <li>        
-                    <div class="d-flex justify-content-between">
-                        <span>dimanche et jours férier</span>
-                        <span>12h à 14h</span>
-                    </div>
-                </li>
+                <?php foreach ($horaires as $horaire): ?>
+                    <li>
+                        <div class="d-flex justify-content-between">
+                            <span><?php echo ucfirst($horaire['jour_de_la_semaine']); ?></span>
+                            <?php if ($horaire['ferme_midi'] && $horaire['ferme_soir']): ?>
+                                <span>Fermé toute le journée</span>
+                            <?php elseif ($horaire['ferme_midi']): ?>
+                                <span>Fermé le midi et ouvert de <?php echo substr($horaire['heure_ouverture_soir'], 0, 5); ?> à <?php echo substr($horaire['heure_fermeture_soir'], 0, 5); ?></span>
+                            <?php elseif ($horaire['ferme_soir']): ?>
+                                <span>Ouvert de <?php echo substr($horaire['heure_ouverture_midi'], 0, 5); ?> à <?php echo substr($horaire['heure_fermeture_midi'], 0, 5); ?> et fermé le soir</span>
+                            <?php else: ?>
+                                <span>
+                                    Ouvert de <?php echo substr($horaire['heure_ouverture_midi'], 0, 5); ?> à <?php echo substr($horaire['heure_fermeture_midi'], 0, 5); ?>
+                                    et de <?php echo substr($horaire['heure_ouverture_soir'], 0, 5); ?> à <?php echo substr($horaire['heure_fermeture_soir'], 0, 5); ?>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
 
             </ul>
         </div>
     </div>
+</div>
+
 		<br>
 		<div class="text-center">
 			<ul class="list-unstyled ">
