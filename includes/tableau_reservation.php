@@ -99,7 +99,6 @@ if ($result->num_rows > 0) {
         echo '</div>';
 
 
-				$conn->close();
     } else {
         echo 'Vous n\'avez pas encore effectué de réservation.';
     }
