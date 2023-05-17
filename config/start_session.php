@@ -129,5 +129,10 @@ if (isset($_SESSION['infos'])) {
   $infos = ""; 
 }
 
+if (isset($_SESSION['jourSemaine'])) {
+  $jourSemaine = $_SESSION['jourSemaine'];
+} else {
+  $jourSemaine = "";
+}
 
 ?>

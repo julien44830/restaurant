@@ -1,35 +1,4 @@
-const heure_Actuelle = new Date();
-console.log(heure_Actuelle);
-const dateInput = document.getElementById('reservation-date');
-let heureFermeture = new Date();
-heureFermeture.setHours(23, 15); // Remplacez ces valeurs par l'heure de fermeture de votre restaurant
-
-const selectHeure = document.querySelector('select[name="time"]');
-
-function updateHeureOptions() {
-  const selectedDate = new Date(dateInput.value);
-  const heures = selectHeure.options;
-
-  for (let i = 0; i < heures.length; i++) {
-    const heureOption = new Date(selectedDate.getTime());
-    const heureParts = heures[i].value.split(':');
-    heureOption.setHours(heureParts[0], heureParts[1]);
-
-    if (heureOption <= heure_Actuelle) {
-      heures[i].style.display = 'none';
-    } else {
-      heures[i].style.display = 'block';
-    }
-  }
-}
-
-dateInput.addEventListener('change', function() {
-  updateHeureOptions();
-});
-
 // Vérifier la date de réservation par défaut
-updateHeureOptions();
-
 window.addEventListener('load', function() {
   console.log('test2');
   const dateInput = document.getElementById('reservation-date');
