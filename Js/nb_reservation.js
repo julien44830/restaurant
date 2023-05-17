@@ -1,6 +1,4 @@
-// Vérifier la date de réservation par défaut
 window.addEventListener('load', function() {
-  console.log('test2');
   const dateInput = document.getElementById('reservation-date');
   const nbCouvertsSelect = document.getElementById('nb_couverts');
   const nbReservationsRestantesElement = document.querySelector('#nb_reservations_restantes');
@@ -15,44 +13,39 @@ window.addEventListener('load', function() {
     }
   };
 
-  function updateReservationsCount(date) {
+  function updateReservationsCount(selectedDate) {
     // Envoyer une requête AJAX pour récupérer le nombre de réservations pour cette date
-    fetch('get_reservation_count.php?date=' + date)
-      .then(response => response.json())
+    fetch(`get_reservation_count.php?date=${selectedDate}&periode=''`)
+    .then(response => response.json())
       .then(data => {
-        console.log(data)
-        // Afficher le nombre de personnes restantes
-        const capacite_max = 20; // Définir la capacité maximale de personnes par jour
-        const nb_personnes = data.nb_couverts;
-        const nb_personnes_restantes = capacite_max - nb_personnes;
-
-        if (data === null) {
-          console.error('La requête a retourné un résultat invalide.');
-          return;
+        // Afficher le nombre de places restantes
+        const capacite_max = 20; // Définir la capacité maximale de places par période
+        let nbPlacesRestantes = capacite_max;
+        console.log(selectedDate);
+        // console.log(reservation);
+        if (data !== null && 'reservations' in data) {
+          const reservations = data.reservations;
+          for (const reservation of reservations) {
+            if (reservation.periode === 'midi') {
+              nbPlacesRestantes -= reservation.nb_couverts;
+            } else if (reservation.periode === 'soir') {
+              nbPlacesRestantes -= reservation.nb_couverts;
+            }
+          }
         }
 
-        // Vérifier que le nb_couverts est présent dans le résultat
-        if (!('nb_couverts' in data)) {
-          console.error('Le champ nb_couverts est manquant dans le résultat de la requête.');
-          return;
-        }
-
-        if (nb_personnes_restantes <= 0) {
+        if (nbPlacesRestantes <= 0) {
           const btn = document.getElementsByClassName("btn");
-          console.log(btn);
           btn[0].disabled = true;
-          nbReservationsRestantesElement.textContent = 'le nombre de réservation maximum pour ce jour est atteind';
-          console.log(nb_personnes_restantes);
+          nbReservationsRestantesElement.textContent = 'Le nombre de réservations maximum pour cette période est atteint.';
         } else {
           const btn = document.getElementsByClassName("btn");
-
-          const message = `Il reste ${nb_personnes_restantes} places pour le ${date}`;
-
+          const message = `Il reste ${nbPlacesRestantes} places pour le ${selectedDate}`;
           nbReservationsRestantesElement.textContent = message;
           btn[0].disabled = false;
 
           // Mettre à jour la liste déroulante du nombre de couverts
-          updateSelectOptions(nb_personnes_restantes);
+          updateSelectOptions(nbPlacesRestantes);
         }
       })
       .catch(error => {
@@ -66,7 +59,8 @@ window.addEventListener('load', function() {
 
   // Écouter les changements de la date sélectionnée et mettre à jour le nombre de réservations restantes et la liste déroulante du nombre de couverts
   dateInput.addEventListener('change', function() {
+    const selectedPeriod = "midi";
+
     const selectedDate = dateInput.value;
-    updateReservationsCount(selectedDate);
-  });
+    updateReservationsCount(selectedDate, selectedPeriod);  });
 });

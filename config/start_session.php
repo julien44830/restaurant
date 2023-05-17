@@ -114,7 +114,7 @@ if (isset($_SESSION['legend'])) {
 if (isset($_POST['nb_couverts'])) {
   $nb_couverts = $_POST['nb_couverts'];
 } else {
-  $nb_couverts = 0; 
+  $nb_couverts = ""; 
 }
 
 if (isset($_POST['result_menu'])) {

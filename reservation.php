@@ -61,50 +61,11 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
         <tr class="border-0">
           <th class="border-0">Heure :</th>
           <td class="border-0">
-            <select class="form-control" name="time" id="select-time">';
-            // $sqlHoraires = "SELECT heure_ouverture_midi, heure_fermeture_midi, heure_ouverture_soir, heure_fermeture_soir, ferme_midi, ferme_soir FROM horaires";
-            // $resultHoraires = $conn->query($sqlHoraires);
+            <select class="form-control" name="time" id="select-time">
+
+            //code généré en js
             
-            // if ($resultHoraires && $resultHoraires->num_rows > 0) {
-            //     $rowHoraires = $resultHoraires->fetch_assoc();
-            //     $heure_ouverture_midi = $rowHoraires['heure_ouverture_midi'];
-            //     $heure_fermeture_midi = $rowHoraires['heure_fermeture_midi'];
-            //     $heure_ouverture_soir = $rowHoraires['heure_ouverture_soir'];
-            //     $heure_fermeture_soir = $rowHoraires['heure_fermeture_soir'];
-            //     $ferme_midi = $rowHoraires['ferme_midi'];
-            //     $ferme_soir = $rowHoraires['ferme_soir'];
-            
-            //     $start_time_midi = strtotime($heure_ouverture_midi);
-            //     $end_time_midi = strtotime($heure_fermeture_midi) - (45 * 60); // Réduire de 45 minutes pour tenir compte du délai de réservation
-            //     $interval_midi = 15 * 60; // 15 min en secondes
-            
-            //     if (!$ferme_midi) {
-            //         for ($i = $start_time_midi; $i < $end_time_midi; $i += $interval_midi) {
-            //             $time_str = date("H:i", $i);
-            //             echo '<option value="'.$time_str.'">'.$time_str.'</option>';
-            //         }
-            //     } else {
-            //         // Le restaurant est fermé pour le midi
-            //         echo '<option value="" disabled>Restaurant fermé le midi</option>';
-            //     }
-            
-            //     $start_time_soir = strtotime($heure_ouverture_soir);
-            //     $end_time_soir = strtotime($heure_fermeture_soir) - (45 * 60); // Réduire de 45 minutes pour tenir compte du délai de réservation
-            //     $interval_soir = 15 * 60; // 15 min en secondes
-            
-            //     if (!$ferme_soir) {
-            //         for ($i = $start_time_soir; $i < $end_time_soir; $i += $interval_soir) {
-            //             $time_str = date("H:i", $i);
-            //             echo '<option value="'.$time_str.'">'.$time_str.'</option>';
-            //         }
-            //     } else {
-            //         // Le restaurant est fermé pour le soir
-            //         echo '<option value="" disabled>Restaurant fermé le soir</option>';
-            //     }
-            // }
-            
-            
-            echo '
+
             </select>
           </td>
         </tr>
@@ -130,5 +91,5 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
 
 include 'templates/footer.php';
 ?>
-<script src="js/nb_reservation.js"></script>
 <script src="js/date_reservation.js"></script>
+<script src="js/nb_reservation.js"></script>

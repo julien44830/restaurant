@@ -10,27 +10,23 @@ $username = isset($_POST['username']) ? $_POST['username'] : "";
 $tel = isset($_POST['tel']) ? $_POST['tel'] : "";
 $nb_default_user = isset($_POST['nb_default_user']) ? intval($_POST['nb_default_user']) : 0;
 $user_allergy = isset($_POST['user_allergy']) ? $_POST['user_allergy'] : "";
-$nb_reservations = isset($_POST['nb_reservations']) ? $_POST['nb_reservations'] : "";
-$nb_couverts = $_POST['nb_couverts'];
+$nb_reservations = isset($_POST['nb_reservations']) ? intval($_POST['nb_reservations']) : 0;
+$nb_couverts = isset($_POST['nb_couverts']) ? intval($_POST['nb_couverts']) : 0;
+$periode = isset($_POST['periode']) ? $_POST['periode'] : "";
 
-$sql = "SELECT COUNT(*) AS nb_reservations FROM reservation WHERE date = '$date'";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-
+// Vérifier si le nombre de réservations atteint le maximum par période
 if ($nb_reservations >= 20) {
-  echo "Désolé, il n'est plus possible de réserver pour cette date.";
+  echo "Désolé, il n'est plus possible de réserver pour cette période.";
 } else {
-    $sql = "INSERT INTO reservation (id_user, username, user_lastname, tel, date, time, nb_couverts, user_allergy) 
-    VALUES ('$user_id', '$username', '$user_lastname', '$tel', '$date', '$time', '$nb_couverts', '$user_allergy')";
+  $sql = "INSERT INTO reservation (id_user, username, user_lastname, tel, date, time, nb_couverts, user_allergy, periode) 
+    VALUES ('$user_id', '$username', '$user_lastname', '$tel', '$date', '$time', '$nb_couverts', '$user_allergy', '$periode')";
 
-if ($conn->query($sql) === TRUE) {
-header("Location: reservation.php");
-} else {
-echo "Erreur : " . $sql . "<br>" . $conn->error;
+  if ($conn->query($sql) === TRUE) {
+    header("Location: reservation.php");
+  } else {
+    echo "Erreur : " . $sql . "<br>" . $conn->error;
+  }
 }
 
 $conn->close();
-
-}
-
 ?>

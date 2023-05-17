@@ -1,5 +1,5 @@
 <?php
-include 'templates/head.php';
+
 include 'config/conn_bdd.php';
 include 'config/start_session.php';
 include 'config/delete_reservation.php';
@@ -48,24 +48,12 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']){
 			<tr>
 				<th class="border-0">Heure :</th>
 				<td class="border-0">
-					<select class="form-control" name="time">';
-					$start_time_1 = strtotime("12:00");
-					$end_time_1 = strtotime("13:15");
-					$interval_1 = 15 * 60; // 15min en secondes
-					for ($i=$start_time_1; $i<$end_time_1; $i+=$interval_1) {
-						$time_str = date("H:i", $i);
-						echo '<option value="'.$time_str.'">'.$time_str.'</option>';
-					}
-		
-					$start_time_2 = strtotime("19:00");
-					$end_time_2 = strtotime("22:15");
-					$interval_2 = 15 * 60; // 15min en secondes
-					for ($i=$start_time_2; $i<$end_time_2; $i+=$interval_2) {
-						$time_str = date("H:i", $i);
-						echo '<option value="'.$time_str.'">'.$time_str.'</option>';
-					}
-					echo '
-					</select>
+				<select class="form-control" name="time" id="select-time">
+
+				//code généré en js
+				
+
+				</select>
 				</td>
 			</tr>
 			<tr>
@@ -88,5 +76,4 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']){
 }
 include 'templates/footer.php';
 ?>
-
 <script src="js/nb_reservation.js"></script>

@@ -55,7 +55,3 @@
 				</div>
 		</nav>
 </header>
-
-<?php
-
-?>

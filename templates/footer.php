@@ -1,4 +1,5 @@
 	<?php
+include 'config/conn_bdd.php';
 $sql = "SELECT * FROM horaires ORDER BY FIELD(jour_de_la_semaine, 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche')";
 $result = mysqli_query($conn, $sql);
 $horaires = mysqli_fetch_all($result, MYSQLI_ASSOC);
