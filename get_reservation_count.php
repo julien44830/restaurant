@@ -7,31 +7,29 @@ $periode = isset($_GET['periode']) ? $_GET['periode'] : '';
 
 // Vérifier si les paramètres sont présents
 if (!empty($date) && !empty($periode)) {
+
   // Préparer la requête SQL
-  $sql = "SELECT * FROM reservation WHERE date = ? AND periode = ?";
+  $sql = "SELECT SUM(nb_couverts) as total_couverts FROM reservation WHERE date = ? AND periode = ?";
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("ss", $date, $periode);
-  $stmt->execute();
-  $result = $stmt->get_result();
 
-  // Récupérer le nombre total de personnes par réservation pour la date donnée
-  $reservations = [];
-  while ($row = $result->fetch_assoc()) {
-    $reservations[] = $row['nb_couverts'];
+  if ($stmt) {
+    // Lier les paramètres à la requête préparée
+    $stmt->bind_param("ss", $date, $periode);
+    $stmt->execute();
+
+    // Obtenir le résultat de la requête
+    $result = $stmt->get_result();
+    $data = $result->fetch_assoc();
+
+    // Retourner le résultat en JSON
+    echo json_encode($data);
+  } else {
+    echo json_encode(['error' => 'Failed to prepare the SQL statement']);
   }
-
-  // Calculer le nombre total de personnes pour la date donnée
-  $totalCouverts = array_sum($reservations);
-
-  // Retourner le résultat en JSON
-  echo json_encode(['total_couverts' => $totalCouverts]);
 } else {
   echo json_encode(['error' => 'Missing parameters']);
 }
 
 // Fermer la connexion à la base de données
-if (isset($stmt)) {
-  $stmt->close();
-}
-$conn->close();
+
 ?>

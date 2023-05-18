@@ -12,7 +12,7 @@ $nb_default_user = isset($_POST['nb_default_user']) ? intval($_POST['nb_default_
 $user_allergy = isset($_POST['user_allergy']) ? $_POST['user_allergy'] : "";
 $nb_reservations = isset($_POST['nb_reservations']) ? intval($_POST['nb_reservations']) : 0;
 $nb_couverts = isset($_POST['nb_couverts']) ? intval($_POST['nb_couverts']) : 0;
-$periode = isset($_POST['periode']) ? $_POST['periode'] : "";
+$periode = getPeriodeFromTime($time);
 
 // Vérifier si le nombre de réservations atteint le maximum par période
 if ($nb_reservations >= 20) {
@@ -29,4 +29,14 @@ if ($nb_reservations >= 20) {
 }
 
 $conn->close();
+
+function getPeriodeFromTime($time) {
+  $heure = intval(explode(':', $time)[0]);
+
+  if ($heure < 16) {
+    return 'midi';
+  } else {
+    return 'soir';
+  }
+}
 ?>

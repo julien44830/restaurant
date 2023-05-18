@@ -76,4 +76,6 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']){
 }
 include 'templates/footer.php';
 ?>
+<script src="js/date_reservation.js"></script>
+
 <script src="js/nb_reservation.js"></script>

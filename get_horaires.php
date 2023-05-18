@@ -36,12 +36,9 @@ if (isset($_GET['jour_de_la_semaine'])) {
         echo "Aucun horaire trouvé pour le jour de la semaine : " . $jourSemaine;
     }
     
-    $stmtHoraires->close();
-} else {
-    // Si la clé "jour_de_la_semaine" n'est pas présente dans la requête GET
-    echo "Paramètre 'jour_de_la_semaine' manquant";
+
 }
 
 // Fermeture de la connexion à la base de données
-$conn->close();
+
 ?>
