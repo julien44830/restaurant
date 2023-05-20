@@ -51,14 +51,14 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
           <input type="hidden" name="timezone_offset" id="timezone-offset" value="">
           <input type="date" class="form-control" name="date" value="' . date('Y-m-d') . '" min="' . date('Y-m-d') . '" id="reservation-date">
           <p id="nb_reservations_restantes"></p>
+
+
         </td>
       </tr>
       <tr class="border-0">
         <th class="border-0">heure :</th>
         <td class="border-0">
           <select class="form-control" name="time" id="time">
-            <option value="midi">Midi</option>
-            <option value="soir">Soir</option>
           </select>
         </td>
       </tr>
