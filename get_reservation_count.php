@@ -12,7 +12,7 @@ if (!empty($date) && !empty($periode)) {
   $sql = "SELECT SUM(nb_couverts) as total_couverts FROM reservation WHERE date = ? AND periode = ?";
   $stmt = $conn->prepare($sql);
 
-  if ($stmt) {
+
     // Lier les paramètres à la requête préparée
     $stmt->bind_param("ss", $date, $periode);
     $stmt->execute();
@@ -23,13 +23,6 @@ if (!empty($date) && !empty($periode)) {
 
     // Retourner le résultat en JSON
     echo json_encode($data);
-  } else {
-    echo json_encode(['error' => 'Failed to prepare the SQL statement']);
   }
-} else {
-  echo json_encode(['error' => 'Missing parameters']);
-}
-
-// Fermer la connexion à la base de données
 
 ?>

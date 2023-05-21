@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedDayOfWeek = getSelectedDayOfWeek(selectedDate);
 
     selectPeriod.value = currentPeriod;
+   
 
     // Effectuer une requête AJAX pour récupérer les horaires depuis le serveur
     fetch(`get_horaires.php?jour_de_la_semaine=${selectedDayOfWeek}`)
@@ -46,10 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
           }
 
           const endTimemidi = new Date();
-          endTimemidi.setHours(horaires.heure_fermeture_midi.split(':')[0], horaires.heure_fermeture_midi.split(':')[1]);
+          
+          const heureFermetureMidi = new Date();
+          heureFermetureMidi.setHours(horaires.heure_fermeture_midi.split(':')[0], horaires.heure_fermeture_midi.split(':')[1]);
+          heureFermetureMidi.setMinutes(heureFermetureMidi.getMinutes() - 45);
+          endTimemidi.setHours(heureFermetureMidi.getHours(), heureFermetureMidi.getMinutes());
+                    console.log(endTimemidi +- 1);
 
           while (currentTimemidi < endTimemidi) {
-            heuresDisponibles.push(`<option name="periode" value="${currentTimemidi.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}">${currentTimemidi.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</option>`);
+            heuresDisponibles.push(`<option name="periode" value="${currentTimemidi.toLocaleTimeString('fr-FR', { hour: '2-digit' , minute: '2-digit' })}">${currentTimemidi.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</option>`);
             currentTimemidi.setMinutes(currentTimemidi.getMinutes() + 15);
           }
         }
@@ -74,7 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
           }
 
           const endTimesoir = new Date();
-          endTimesoir.setHours(horaires.heure_fermeture_soir.split(':')[0], horaires.heure_fermeture_soir.split(':')[1]);
+          const heureFermeturesoir = new Date();
+          heureFermeturesoir.setHours(horaires.heure_fermeture_soir.split(':')[0], horaires.heure_fermeture_soir.split(':')[1]);
+          heureFermeturesoir.setMinutes(heureFermeturesoir.getMinutes() - 45);
+          endTimesoir.setHours(heureFermeturesoir.getHours(), heureFermeturesoir.getMinutes());
+          console.log(endTimesoir);
 
           while (currentTimesoir < endTimesoir) {
             heuresDisponibles.push(`<option name="periode" value="${currentTimesoir.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}">${currentTimesoir.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}</option>`);

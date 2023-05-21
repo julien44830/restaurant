@@ -1,35 +1,8 @@
-const heure_Actuelle = new Date();
-console.log(heure_Actuelle);
 const dateInput = document.getElementById('reservation-date');
-let heureFermeture = new Date();
-heureFermeture.setHours(23, 15); // Remplacez ces valeurs par l'heure de fermeture de votre restaurant
-
 const selectHeure = document.querySelector('select[id="time"]');
 const nbCouvertsSelect = document.getElementById('nb_couverts');
 const nbReservationsRestantesElement = document.querySelector('#nb_reservations_restantes');
 
-function updateHeureOptions() {
-  const selectedDate = new Date(dateInput.value);
-  const heures = selectHeure.options;
-
-  for (let i = 0; i < heures.length; i++) {
-    const heureOption = new Date(selectedDate.getTime());
-    const heureParts = heures[i].value.split(':');
-    heureOption.setHours(heureParts[0], heureParts[1]);
-
-    if (heureOption <= heure_Actuelle) {
-      heures[i].style.display = 'none';
-    } else {
-      heures[i].style.display = 'block';
-    }
-  }
-}
-
-
-// Écouter les changements de la date sélectionnée
-dateInput.addEventListener('change', function() {
-  updateHeureOptions();
-});
 
 // Écouter les changements de l'heure sélectionnée
 selectHeure.addEventListener('change', function() {
@@ -86,19 +59,28 @@ function updateReservationsCount(date, periode, heure) {
 
 function updateSelectOptions(nbCouvertsRestants) {
   nbCouvertsSelect.innerHTML = '';
-  for (let i = 1; i <= nbCouvertsRestants; i++) {
-    const option = document.createElement('option');
-    option.value = i;
-    option.text = i;
-    nbCouvertsSelect.appendChild(option);
-  }
+
+  fetch('get_nb_default_user.php')
+    .then(response => response.json())
+    .then(data => {
+      const nbCouvertsDefault = data.nb_default_user;
+      console.log(nbCouvertsDefault);
+
+      const startingValue = Math.max(nbCouvertsDefault, 1);
+      for (let i = startingValue; i <= nbCouvertsRestants; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.text = i;
+        nbCouvertsSelect.appendChild(option);
+      }
+    })
+    .catch(error => console.error(error));
 }
 
 // Obtenir la date actuelle et mettre à jour le nombre de réservations restantes et la liste déroulante du nombre de couverts
 const currentDate = new Date().toISOString().split('T')[0];
-updateHeureOptions();
+
 updateReservationsCount(currentDate, 'midi', '');
-updateReservationsCount(currentDate, 'soir', '');
 
 // Écouter les changements de la date sélectionnée et mettre à jour le nombre de réservations restantes et la liste déroulante du nombre de couverts
 dateInput.addEventListener('change', function() {

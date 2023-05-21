@@ -1,10 +1,11 @@
 <?php
+ob_start(); // Démarre la mise en mémoire tampon de la sortie
+include 'config/conn_bdd.php';
+include 'get_reservation_count.php';
+include 'config/delete_reservation.php';
 include 'templates/head.php';
 include 'templates/nav.php';
-include 'config/conn_bdd.php';
-include 'config/start_session.php';
-include 'config/delete_reservation.php';
-include 'get_reservation_count.php';
+
 date_default_timezone_set('Europe/Paris');
 
 error_reporting(E_ALL);
@@ -78,6 +79,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
 }
 
 include 'templates/footer.php';
+ob_end_flush(); // Envoie la sortie mise en mémoire tampon
 ?>
 
 <script src="js/date_reservation.js"></script>

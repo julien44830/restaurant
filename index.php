@@ -4,6 +4,7 @@ include 'config/conn_bdd.php';
 include 'templates/head.php';
 include 'templates/nav.php';
 
+
 if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
     include 'index_admin.php';
 } else {
@@ -24,7 +25,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) {
         </div>
     </div>
 
-    <div class="row pb-5 gx-3">
+    <div class="row pb-5 gx-3 carou">
 		<div class="swiper-container text-center" style="overflow-x: hidden;">
             <div class="swiper-wrapper">
                 <?php
